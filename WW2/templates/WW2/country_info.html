@@ -1,0 +1,31 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{country.name}}</title>
+</head>
+<body style="background-color: {{alliance.back_c}}; color: {{alliance.font_c}}">
+    <font size="7"><b><u>{{country.name}}</u></b></font><br>
+    <img src="{{MEDIA_URL}}{{country.flag}}" width="375" height="190">
+    <main>
+        <a>{{country.info}}</a><br>
+        <b>Население: {{country.population}} млн. человек</b><br>
+        <b>Площадь: {{country.area}} кв. км</b><br><br>
+
+        <font size="5"><i>Используемое вооружение: </i></font><br>
+        {% for weapon in weapons %}
+        <li><a href="{% url 'weapon_info' weapon.id%}" style="color: {{alliance.font_c}}">{{ weapon.name }}</a></li>
+        {% endfor %}
+    </main>
+    <div class=nav>
+        <a href="{% url 'main' %}" style="color: {{alliance.font_c}}; text-align: right">>на главную<</a>
+        <br>
+        <a href="{% url 'alliance_info' alliance.id%}" style="color: {{alliance.font_c}}; text-align: right">>в альянс<</a>
+    </div>
+</body>
+</html>

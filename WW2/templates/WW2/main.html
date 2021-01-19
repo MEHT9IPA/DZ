@@ -1,0 +1,29 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ВМВ2</title>
+</head>
+
+<body style="background-color: navajowhite;">
+    <font size="7"><strong>Вторая мировая война</strong></font><br>
+    <main>
+        <a>Вторая мировая война (1 сентября 1939 — 2 сентября 1945) — война двух мировых военно-политических коалиций, ставшая крупнейшим вооружённым конфликтом в истории человечества. В ней участвовали 62 государства из 73 существовавших на тот момент (80% населения Земного шара). Боевые действия велись на территории Европы, Азии и Африки и в водах всех океанов. Это единственный конфликт, в котором было применено ядерное оружие.</a><br><br>
+        <font size="6"><i>Противоборствующие стороны:</i></font><br>
+        <div style="overflow: hidden;">
+                <div style="font-weight: bold; font-size: 24px">
+                {% for alliance in alliances %}
+                    <div style="float: left;"><a href="{% url 'alliance_info' alliance.id%}" style="color: {{alliance.back_c}}">{{ alliance }}</a></div>
+                    <div style="float: left; width: 200px"><a> </a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

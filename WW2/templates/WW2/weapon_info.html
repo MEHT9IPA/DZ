@@ -1,0 +1,26 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{weapon.name}}</title>
+</head>
+<body style="background-color: navajowhite;">
+    <font size="5"><b>{{weapon.name}}</b></font><br>
+    <main>
+        <a>{{weapon.info}}</a><br>
+        <font size="4"><i>Основные эксплуатанты:</i></font><br>
+        {% for country in countries %}
+        <li><a href="{% url 'country_info' country.id%}" >{{ country.name }}</a></li>
+        {% endfor %}
+    </main>
+
+    <div class=nav>
+        <a href="{% url 'main' %}" style="color: {{alliance.font_c}}; text-align: right">>на главную<</a>
+    </div>
+</body>
+</html>
